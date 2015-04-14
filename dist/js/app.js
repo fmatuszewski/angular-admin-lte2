@@ -18,6 +18,62 @@ if (typeof jQuery === "undefined") {
   throw new Error("AdminLTE requires jQuery");
 }
 
+var adminLTE = angular.module('AdminLTE',['ui.router']);
+
+adminLTE.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider,$stateProvider){
+	$urlRouterProvider.otherwise('/dashboard1');
+	$stateProvider
+	.state('dashboard1',{
+		url: '/dashboard1',
+		templateUrl:'partials/dashboard1.html'
+	})
+	.state('dashboard2',{
+		url: '/dashboard2',
+		templateUrl:'partials/dashboard2.html'
+	})
+	.state('chartjs',{
+		url: '/charts/chartjs',
+		templateUrl:'partials/charts/chartjs.html'
+	})
+	.state('inline',{
+		url: '/charts/inline',
+		templateUrl:'partials/charts/inline.html'
+	})
+	.state('flot',{
+		url: '/charts/flot',
+		templateUrl:'partials/charts/flot.html'
+	})
+	.state('morris',{
+		url: '/charts/morris',
+		templateUrl:'partials/charts/morris.html'
+	})
+
+	
+	
+	
+	;
+}]);
+adminLTE.directive('sidebar', function(){
+	return {
+		restrict: 'C',
+		link: function(scope, element, attrs){
+			  //Enable sidebar tree view controls
+				$.AdminLTE.tree(element);
+		}
+	};
+});
+adminLTE.directive('header',function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'templates/header.html',
+		link: function(scope, element, attrs){
+			$.AdminLTE.pushMenu($(element).find('.sidebar-toggle'));
+		}
+	};
+});
+
+  
+  
 /* AdminLTE
  *
  * @type Object
@@ -128,8 +184,7 @@ $(function () {
   //Activate the layout maker
   $.AdminLTE.layout.activate();
 
-  //Enable sidebar tree view controls
-  $.AdminLTE.tree('.sidebar');
+
 
   //Add slimscroll to navbar dropdown
   if (o.navbarMenuSlimscroll && typeof $.fn.slimscroll != 'undefined') {
@@ -140,10 +195,7 @@ $(function () {
     }).css("width", "100%");
   }
 
-  //Activate sidebar push menu
-  if (o.sidebarPushMenu) {
-    $.AdminLTE.pushMenu(o.sidebarToggleSelector);
-  }
+
 
   //Activate Bootstrap tooltip
   if (o.enableBSToppltip) {
