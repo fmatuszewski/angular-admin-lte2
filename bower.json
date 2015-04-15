@@ -30,5 +30,10 @@
     "bower_components",
     "composer.json",
     "documentaion"
-  ]
+  ],
+  "dependencies": {
+    "angular-chart.js": "~0.6.0",
+    "angular-bootstrap": "~0.12.1",
+    "smoothscroll": "~0.0.4"
+  }
 }

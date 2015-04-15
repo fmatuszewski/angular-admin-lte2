@@ -1,0 +1,25 @@
+{
+  "name": "smoothscroll",
+  "version": "0.0.4",
+  "main": "dist/smoothscroll.js",
+  "authors": [
+    "Dustan Kasten <dustan.kasten@gmail.com>"
+  ],
+  "license": "https://github.com/iamdustan/smoothscroll/blob/master/LICENSE",
+  "keywords": [
+    "scroll",
+    "smooth",
+    "CSSOM",
+    "polyfill"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "raf.js": "~0.0.3"
+  }
+}
