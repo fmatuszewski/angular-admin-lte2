@@ -18,7 +18,7 @@ if (typeof jQuery === "undefined") {
   throw new Error("AdminLTE requires jQuery");
 }
 
-var adminLTE = angular.module('AdminLTE',['ui.router']);
+var adminLTE = angular.module('AdminLTE',['ui.router','chart.js','angular-flot','ui.bootstrap']);
 
 adminLTE.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider,$stateProvider){
 	$urlRouterProvider.otherwise('/dashboard1');
@@ -47,6 +47,35 @@ adminLTE.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvid
 		url: '/charts/morris',
 		templateUrl:'partials/charts/morris.html'
 	})
+	.state('widgets',{
+		url: '/widgets',
+		templateUrl:'partials/widgets.html'
+	})
+	.state('uibuttons',{
+		url: '/UI/buttons',
+		templateUrl:'partials/UI/buttons.html'
+	})
+	.state('uigeneral',{
+		url: '/UI/general',
+		templateUrl:'partials/UI/general.html'
+	})
+	.state('uiicons',{
+		url: '/UI/icons',
+		templateUrl:'partials/UI/icons.html'
+	})
+	.state('uimodals',{
+		url: '/UI/modals',
+		templateUrl:'partials/UI/modals.html'
+	})
+	.state('uisliders',{
+		url: '/UI/sliders',
+		templateUrl:'partials/UI/sliders.html'
+	})
+	.state('uitimeline',{
+		url: '/UI/timeline',
+		templateUrl:'partials/UI/timeline.html'
+	});
+	
 
 	
 	
@@ -146,8 +175,428 @@ adminLTE.directive('sparkline',function(){
 		}
 	}
 });
- 
 
+/*
+Charts js
+*/
+  adminLTE.controller('LineCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+      [65, 59, 80, 81, 56, 55, 40],
+      [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $scope.onClick = function (points, evt) {
+      console.log(points, evt);
+    };
+    $scope.onHover = function (points) {
+      if (points.length > 0) {
+        console.log('Point', points[0].value);
+      } else {
+        console.log('No point');
+      }
+    };
+
+    $timeout(function () {
+      $scope.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      $scope.data = [
+        [28, 48, 40, 19, 86, 27, 90],
+        [65, 59, 80, 81, 56, 55, 40]
+      ];
+      $scope.series = ['Series C', 'Series D'];
+    }, 3000);
+  }]);
+
+  adminLTE.controller('BarCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    $scope.options = { scaleShowVerticalLines: false };
+    $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+    $scope.series = ['Series A', 'Series B'];
+    $scope.data = [
+      [65, 59, 80, 81, 56, 55, 40],
+      [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $timeout(function () {
+      $scope.options = { scaleShowVerticalLines: true };
+    }, 3000);
+  }]);
+
+  adminLTE.controller('DoughnutCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    $scope.labels = ['Download Sales', 'In-Store Sales', 'Mail-Order Sales'];
+    $scope.data = [0, 0, 0];
+
+    $timeout(function () {
+      $scope.data = [350, 450, 100];
+    }, 500);
+  }]);
+
+  adminLTE.controller('PieCtrl', function ($scope) {
+    $scope.labels = ['Download Sales', 'In-Store Sales', 'Mail Sales'];
+    $scope.data = [300, 500, 100];
+  });
+
+  adminLTE.controller('PolarAreaCtrl', function ($scope) {
+    $scope.labels = ['Download Sales', 'In-Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+    $scope.data = [300, 500, 100, 40, 120];
+  });
+
+  adminLTE.controller('BaseCtrl', function ($scope) {
+    $scope.labels = ['Download Sales', 'Store Sales', 'Mail Sales', 'Telesales', 'Corporate Sales'];
+    $scope.data = [300, 500, 100, 40, 120];
+    $scope.type = 'PolarArea';
+
+    $scope.toggle = function () {
+      $scope.type = $scope.type === 'PolarArea' ?  'Pie' : 'PolarArea';
+    };
+  });
+
+  adminLTE.controller('RadarCtrl', function ($scope) {
+    $scope.labels = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
+
+    $scope.data = [
+      [65, 59, 90, 81, 56, 55, 40],
+      [28, 48, 40, 19, 96, 27, 100]
+    ];
+
+    $scope.onClick = function (points, evt) {
+      console.log(points, evt);
+    };
+  });
+
+  adminLTE.controller('StackedBarCtrl', function ($scope) {
+    $scope.labels = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+    $scope.type = 'StackedBar';
+
+    $scope.data = [
+      [65, 59, 90, 81, 56, 55, 40],
+      [28, 48, 40, 19, 96, 27, 100]
+    ];
+  });
+
+  adminLTE.controller('DataTablesCtrl', function ($scope) {
+    $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+    $scope.data = [
+      [65, 59, 80, 81, 56, 55, 40],
+      [28, 48, 40, 19, 86, 27, 90]
+    ];
+    $scope.colours = [
+      { // grey
+        fillColor: 'rgba(148,159,177,0.2)',
+        strokeColor: 'rgba(148,159,177,1)',
+        pointColor: 'rgba(148,159,177,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(148,159,177,0.8)'
+      },
+      { // dark grey
+        fillColor: 'rgba(77,83,96,0.2)',
+        strokeColor: 'rgba(77,83,96,1)',
+        pointColor: 'rgba(77,83,96,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(77,83,96,1)'
+      }
+    ];
+    $scope.randomize = function () {
+      $scope.data = $scope.data.map(function (data) {
+        return data.map(function (y) {
+          y = y + Math.random() * 10 - 5;
+          return parseInt(y < 0 ? 0 : y > 100 ? 100 : y);
+        });
+      });
+    };
+  });
+
+/*
+Flot Charts
+*/
+adminLTE.controller('FlotInteractive', ['$scope', '$log','$element', function ($scope,$log,$element) {
+    $scope.$log = $log;
+	$scope.data = [];
+    $scope.myChartOptions = {
+          grid: {
+            borderColor: "#f3f3f3",
+            borderWidth: 1,
+            tickColor: "#f3f3f3"
+          },
+          series: {
+            shadowSize: 0, // Drawing is faster without shadows
+            color: "#3c8dbc"
+          },
+          lines: {
+            fill: true, //Converts the line chart to area chart
+            color: "#3c8dbc"
+          },
+          yaxis: {
+            min: 0,
+            max: 100,
+            show: true
+          },
+          xaxis: {
+            show: true
+          }
+        };
+	$scope.totalPoints = 100;
+	$scope.updateInterval = 500;
+	$scope.realtime = 1;
+	$scope.getRandomData = function() {
+
+          if ($scope.data.length > 0)
+            $scope.data = $scope.data.slice(1);
+
+          // Do a random walk
+          while ($scope.data.length < $scope.totalPoints) {
+
+            var prev = $scope.data.length > 0 ? $scope.data[$scope.data.length - 1] : 50,
+                    y = prev + Math.random() * 10 - 5;
+
+            if (y < 0) {
+              y = 0;
+            } else if (y > 100) {
+              y = 100;
+            }
+
+            $scope.data.push(y);
+          }
+
+          // Zip the generated y values with the x values
+          var res = [];
+          for (var i = 0; i < $scope.data.length; ++i) {
+            res.push([i, $scope.data[i]]);
+          }
+
+          return res;
+        };
+	$scope.update = function() {
+          $scope.data =[$scope.getRandomData()];
+          // Since the axes don't change, we don't need to call plot.setupGrid()
+         
+		  
+          if ($scope.realtime == 1)
+            setTimeout($scope.update, $scope.updateInterval);
+        };
+	
+}]);
+adminLTE.controller('FlotLineChart'  , function ($scope) {
+        var sin = [], cos = [];
+        for (var i = 0; i < 14; i += 0.5) {
+          sin.push([i, Math.sin(i)]);
+          cos.push([i, Math.cos(i)]);
+        }
+		var line_data1 = {
+          data: sin,
+          color: "#3c8dbc"
+        };
+        var line_data2 = {
+          data: cos,
+          color: "#00c0ef"
+        };
+		
+    $scope.myData = [line_data1, line_data2];
+    $scope.myChartOptions = {
+          grid: {
+            hoverable: true,
+            borderColor: "#f3f3f3",
+            borderWidth: 1,
+            tickColor: "#f3f3f3"
+          },
+          series: {
+            shadowSize: 0,
+            lines: {
+              show: true
+            },
+            points: {
+              show: true
+            }
+          },
+          lines: {
+            fill: false,
+            color: ["#3c8dbc", "#f56954"]
+          },
+          yaxis: {
+            show: true,
+          },
+          xaxis: {
+            show: true
+          }
+        };
+});
+adminLTE.controller('FlotAreaChart'  , function ($scope) {
+    var areaData = [[2, 88.0], [3, 93.3], [4, 102.0], [5, 108.5], [6, 115.7], [7, 115.6],
+    [8, 124.6], [9, 130.3], [10, 134.3], [11, 141.4], [12, 146.5], [13, 151.7], [14, 159.9],
+    [15, 165.4], [16, 167.8], [17, 168.7], [18, 169.5], [19, 168.0]];
+		  
+    $scope.myData = [areaData];
+    $scope.myChartOptions = {
+          grid: {
+            borderWidth: 0
+          },
+          series: {
+            shadowSize: 0, // Drawing is faster without shadows
+            color: "#00c0ef"
+          },
+          lines: {
+            fill: true //Converts the line chart to area chart
+          },
+          yaxis: {
+            show: false
+          },
+          xaxis: {
+            show: false
+          }
+        };
+});
+adminLTE.controller('FlotBarChart'   , function ($scope) {
+    $scope.myData = [{
+          data: [["January", 10], ["February", 8], ["March", 4], ["April", 13], ["May", 17], ["June", 9]],
+          color: "#3c8dbc"
+        }];
+    $scope.myChartOptions = {
+          grid: {
+            borderWidth: 1,
+            borderColor: "#f3f3f3",
+            tickColor: "#f3f3f3"
+          },
+          series: {
+            bars: {
+              show: true,
+              barWidth: 0.5,
+              align: "center"
+            }
+          },
+          xaxis: {
+            mode: "categories",
+            tickLength: 0
+          }
+        };
+});
+adminLTE.controller('FlotDonutChart' , function ($scope) {
+    $scope.myData = [
+          {label: "Series2", data: 30, color: "#3c8dbc"},
+          {label: "Series3", data: 20, color: "#0073b7"},
+          {label: "Series4", data: 50, color: "#00c0ef"}
+        ];
+    $scope.myChartOptions = {
+          series: {
+            pie: {
+              show: true,
+              radius: 1,
+              innerRadius: 0.5,
+              label: {
+                show: true,
+                radius: 2 / 3,
+                formatter: labelFormatter,
+                threshold: 0.1
+              }
+
+            }
+          },
+          legend: {
+            show: false
+          }
+        };
+	function labelFormatter(label, series) {
+        return "<div style='font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;'>"
+                + label
+                + "<br/>"
+                + Math.round(series.percent) + "%</div>";
+      }
+});
+ 
+adminLTE.controller('ChatController' , function ($scope,$http,$filter) {
+	$http.get('/partials/widgets/dialog1.json')
+	.success(function(data){
+		$scope.messages = data;
+	});
+});
+ /* BoxWidget
+ * =========
+ * BoxWidget is plugin to handle collapsing and
+ * removing boxes from the screen.
+ *
+ * @type Object
+ * @usage $.AdminLTE.boxWidget.activate()
+ *        Set all of your option in the main $.AdminLTE.options object
+ */
+ adminLTE.directive( 'box',function(){
+	return {
+		restrict: 'C',
+		compile:  function (tElement,tAttr,transclude){
+		    var _this = this;
+			$(tElement).find(this.boxWidgetOptions.boxWidgetSelectors.collapse).click( function (e){
+				e.preventDefault();
+				_this.collapse($(this));
+			});
+			$(tElement).find(this.boxWidgetOptions.boxWidgetSelectors.remove).click( function(e){
+				e.preventDefault();
+				_this.remove($(this));
+			});
+		},
+		collapse: function (element) {
+		//Find the box parent
+		var box = element.parents(".box").first();
+		//Find the body and the footer
+		var bf = box.find(".box-body, .box-footer");
+		if (!box.hasClass("collapsed-box")) {
+		  //Convert minus into plus
+		  element.children(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
+		  bf.slideUp(300, function () {
+			box.addClass("collapsed-box");
+		  });
+		} else {
+		  //Convert plus into minus
+		  element.children(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
+		  bf.slideDown(300, function () {
+			box.removeClass("collapsed-box");
+		  });
+		}
+	  },
+		remove:   function (element) {
+			//Find the box parent
+			var box = element.parents(".box").first();
+			box.slideUp();
+		  },
+		boxWidgetOptions: {
+			boxWidgetIcons: {
+			  //The icon that triggers the collapse event
+			  collapse: 'fa fa-minus',
+			  //The icon that trigger the opening event
+			  open: 'fa fa-plus',
+			  //The icon that triggers the removing event
+			  remove: 'fa fa-times'
+			},
+			boxWidgetSelectors: {
+			  //Remove button selector
+			  remove: '[data-widget="remove"]',
+			  //Collapse button selector
+			  collapse: '[data-widget="collapse"]'
+			}
+		}
+
+	}
+ });
+
+ adminLTE.directive('chat',function(){
+	return {
+		restrict: 'E',
+		//template: '<h1>Hello World</h1>',
+		templateUrl:'templates/direct-chat.html',
+		scope:{type:'@',title:'@',count:'@count',messages:'=messages'},
+		replace: true,
+		compile: function(tElement,tAttr){
+			tElement.find("[data-widget='chat-pane-toggle']").click(function () {
+			  $(this).parents('.direct-chat').first().toggleClass('direct-chat-contacts-open');
+			});
+			return {
+			 pre:  function  preLink(scope,iElement,iAttrs){},
+			 post: function postLink(scope,iElement,iAttrs){
+				
+			 }
+			}
+		},
+	};
+ });
+ 
+  
 /* AdminLTE
  *
  * @type Object
@@ -272,14 +721,12 @@ $(function () {
 
 
   //Activate Bootstrap tooltip
-  if (o.enableBSToppltip) {
-    $(o.BSTooltipSelector).tooltip();
-  }
+  //Deprecated by angular-bootstrap
+  //if (o.enableBSToppltip) {
+  //  $(o.BSTooltipSelector).tooltip();
+  //}
 
-  //Activate box widget
-  if (o.enableBoxWidget) {
-    $.AdminLTE.boxWidget.activate();
-  }
+
 
   //Activate fast click
   if (o.enableFastclick && typeof FastClick != 'undefined') {
@@ -470,57 +917,7 @@ $.AdminLTE.tree = function (menu) {
   });
 };
 
-/* BoxWidget
- * =========
- * BoxWidget is plugin to handle collapsing and
- * removing boxes from the screen.
- *
- * @type Object
- * @usage $.AdminLTE.boxWidget.activate()
- *        Set all of your option in the main $.AdminLTE.options object
- */
-$.AdminLTE.boxWidget = {
-  activate: function () {
-    var o = $.AdminLTE.options;
-    var _this = this;
-    //Listen for collapse event triggers
-    $(o.boxWidgetOptions.boxWidgetSelectors.collapse).click(function (e) {
-      e.preventDefault();
-      _this.collapse($(this));
-    });
 
-    //Listen for remove event triggers
-    $(o.boxWidgetOptions.boxWidgetSelectors.remove).click(function (e) {
-      e.preventDefault();
-      _this.remove($(this));
-    });
-  },
-  collapse: function (element) {
-    //Find the box parent
-    var box = element.parents(".box").first();
-    //Find the body and the footer
-    var bf = box.find(".box-body, .box-footer");
-    if (!box.hasClass("collapsed-box")) {
-      //Convert minus into plus
-      element.children(".fa-minus").removeClass("fa-minus").addClass("fa-plus");
-      bf.slideUp(300, function () {
-        box.addClass("collapsed-box");
-      });
-    } else {
-      //Convert plus into minus
-      element.children(".fa-plus").removeClass("fa-plus").addClass("fa-minus");
-      bf.slideDown(300, function () {
-        box.removeClass("collapsed-box");
-      });
-    }
-  },
-  remove: function (element) {
-    //Find the box parent
-    var box = element.parents(".box").first();
-    box.slideUp();
-  },
-  options: $.AdminLTE.options.boxWidgetOptions
-};
 
 /* ------------------
  * - Custom Plugins -

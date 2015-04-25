@@ -1,0 +1,23 @@
+//liczba osób biorących udział
+//numer edycji budżetu partycypacyjnego.
+//całkowity budżet przeznaczony na ten cel
+//ocena budżetu partycypacyjnego przez obywateli
+//nazwa gminy	
+//kto był inicjatorem wprowadzenia budżetu partycypacyjnego	
+//kwota przeznaczona na budżet partycypacyjny (% budżetu)
+//dlaczego zdecydowano się na wprowadzenie budżetu partycypacyjnego?	
+//z jakim wyprzedzeniem zaczęto przygotowywać budżet partycypacyjny?	
+//w jaki sposób mieszkańcy podejmowali decyzję?	
+//ile osób wzięło udział w projekcie?
+//w jaki sposób przeprowadzano ewaluację projektu	
+//wypowiedź prezydenta/ rekomendacja wprowadzenia budżetu partycypacyjnego
+//liczba zgłoszonych projektów
+//wartość zgłoszonych projektów
+//liczba projektów głosowanych
+//wartość projektów głosowanych
+//oddane głosy
+//liczba projektów do realizacji
+//wartość projektów do realizacji	
+//Typ Procesu Partycypacyjnego. 
+//Data Rozpoczęcia
+//Data Zakończenia.

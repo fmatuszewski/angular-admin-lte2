@@ -1,0 +1,71 @@
+
+location <String>
+name <String>
+classification<Classification>
+targetGroup <Group>
+status <>
+shortDescription <String>
+longDescription< >
+creationDate <Date>
+justification < >
+contour <String>
+longitude
+latitude
+implementationCost
+upkeepYearlyCost
+externalWebsite
+externalFacebook
+externalMovie
+externalEmail
+
+imagesPath
+
+
+
+
+
+projectNumber
+preselectionVotesNo
+selectionVotesNo
+office
+department
+officialComment
+authorComment
+residentsComment
+
+statusModificationDate	
+//-------projektodawca, operator, administrator-----------
+//Lokalizacja Ulica Rejon Ulic (dodatkowo
+//Nazwa projektu
+//Klasyfikacja propozycji projektu (tematyka)
+//Potencjalni odbiorcy propozycji projektu
+//Status Projektu (stan realizacji) (enum)
+//(String) Krótki opis
+//(text) Długi opis
+//Data Utworzenia Rekordu.
+//(text) Uzasadnienie
+//(geoJson)Obrys Znacznik lub linia reprezentująca lokalizację 
+//Szerokość Geograficzna
+//Długość Geograficzna
+//(Liczba zmiennoprzecinkowa) Koszt realizacji po weryfikacji 
+//(Liczba zmiennoprzecinkowa) Koszt utrzymania
+//(String) Strona Zewnętrzna
+//(String) Strona Facebook.
+//(String) Link do filmu na You Tube 
+//(String) Email do projektodawcy kopiowany podczas tworzenia projektu z Gui lub importowany z pliku.
+//(String) Link do folder ze zdjęciami projektu generowany jako generowany jakou {path_to_assets}/{id}
+//----- projektodawca-----
+//
+//
+//-----operator, administrator, import z pliku, projektodawca-----
+//(Liczba) nr projektu, 
+//(Liczba) liczba głosów w preselekcji, 
+//(Liczba) liczba głosów, 
+//(String) urząd realizujący, 
+//(String) wydział realizujący, 
+//(text) uwagi miasta do projektu 
+//(text) konsultacje z autorem, 
+//(text) uwagi mieszkańców do realizacji. 
+//-------kolumny automatycznie wyznaczane ---------
+//Data Modyfikacji Statusu projektu.
+

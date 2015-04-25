@@ -7,9 +7,11 @@
     <!-- Bootstrap 3.3.2 -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Font Awesome Icons -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons -->
-    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!--link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" /-->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<!-- Ionicons -->
+    <!--link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" /-->
+	<link href="../bower_components/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
     <!-- Morris chart -->
     <link href="plugins/morris/morris.css" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
@@ -21,6 +23,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+	<!-- Angular Chart -->
+	<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -55,14 +59,16 @@
 
     <!-- jQuery 2.1.3 -->
     <script src="plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <!-- FastClick -->
-    <script src='plugins/fastclick/fastclick.min.js'></script>
     <!-- Angular JS -->
 	<script src="bower_components/angular/angular.min.js" type="text/javascript"></script>
 	<!-- Angular Ui Router -->
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <!--<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+    <!-- FastClick -->
+    <script src='plugins/fastclick/fastclick.min.js'></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.js" type="text/javascript"></script>
     <!-- Sparkline -->
@@ -81,8 +87,6 @@
     <!-- ChartJS 1.0.1 -->
     <script src="plugins/chartjs/Chart.min.js" type="text/javascript"></script>
 
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="dist/js/pages/dashboard2.js" type="text/javascript"></script>
 
     <!-- jQuery Knob -->
     <script src="../../plugins/knob/jquery.knob.js" type="text/javascript"></script>
@@ -97,12 +101,17 @@
     <script src="../../plugins/flot/jquery.flot.pie.min.js" type="text/javascript"></script>
     <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
     <script src="../../plugins/flot/jquery.flot.categories.min.js" type="text/javascript"></script>
+	<script src="../bower_components/angular-flot/angular-flot.js"></script>
 
 	<!-- ChartJS 1.0.1 -->
-    <script src="../../plugins/chartjs/Chart.min.js" type="text/javascript"></script>
+    <!--<script src="../../plugins/chartjs/Chart.min.js" type="text/javascript"></script>-->
+    <script src="../bower_components/Chart.js/Chart.js"></script>
+	<script src="../bower_components/angular-chart.js/dist/angular-chart.min.js"></script>
 
+  
 	<!-- Morris.js charts -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <!--script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script-->
+	<script src="../bower_components/raphael/raphael-min.js"></script>
     <script src="../../plugins/morris/morris.min.js" type="text/javascript"></script>
  
  

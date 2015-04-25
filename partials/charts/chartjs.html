@@ -16,23 +16,38 @@
           <div class="row">
             <div class="col-md-6">
               <!-- AREA CHART -->
-              <div class="box box-primary">
+              <div class="box box-primary" ng-controller="LineCtrl">
                 <div class="box-header">
                   <h3 class="box-title">Area Chart</h3>
                 </div>
                 <div class="box-body">
-                  <canvas id="areaChart" height="250"></canvas>
+                  <canvas id="line" class="chart chart-line" data="data"
+					  labels="labels" legend="true" series="series"
+					  click="onClick">
+				  </canvas> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
               <!-- DONUT CHART -->
-              <div class="box box-danger">
+              <div class="box box-danger" ng-controller="DoughnutCtrl">
                 <div class="box-header">
                   <h3 class="box-title">Donut Chart</h3>
                 </div>
                 <div class="box-body">
                   <div class="chart-responsive">
-                    <canvas id="pieChart" height="250"></canvas>
+                    <canvas id="doughnut" class="chart chart-doughnut chart-xs" legend="true" data="data" labels="labels" legend="false"></canvas>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+			  
+			  <!-- POLAR CHART -->
+              <div class="box box-danger" ng-controller="PolarAreaCtrl">
+                <div class="box-header">
+                  <h3 class="box-title">Polar Chart</h3>
+                </div>
+                <div class="box-body">
+                  <div class="chart-responsive">
+                    <canvas id="polar" class="chart chart-polar-area" data="data" labels="labels"></canvas>
                   </div>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
@@ -40,25 +55,36 @@
             </div><!-- /.col (LEFT) -->
             <div class="col-md-6">
               <!-- LINE CHART -->
-              <div class="box box-info">
+              <div class="box box-info" ng-controller="PieCtrl">
                 <div class="box-header">
-                  <h3 class="box-title">Line Chart</h3>
+                  <h3 class="box-title">Pie Chart</h3>
                 </div>
                 <div class="box-body">
-                  <canvas id="lineChart" height="250"></canvas>
+                  <canvas id="pie" class="chart chart-pie chart-xs" legend="true" data="data" labels="labels"></canvas>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
               <!-- BAR CHART -->
-              <div class="box box-success">
+              <div class="box box-success" ng-controller="BarCtrl">
                 <div class="box-header">
                   <h3 class="box-title">Bar Chart</h3>
                 </div>
                 <div class="box-body">
-                  <canvas id="barChart" height="230"></canvas>
+                  <canvas id="bar" class="chart chart-bar" legend="true" data="data" labels="labels" series="series"
+                      options="options"></canvas>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
 
+			  <!-- RADAAR CHART -->
+              <div class="box box-success" ng-controller="RadarCtrl">
+                <div class="box-header">
+                  <h3 class="box-title">Radar Chart</h3>
+                </div>
+                <div class="box-body">
+                  <canvas id="area" class="chart chart-radar" data="data" labels="labels" click="onClick"></canvas>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+			  
             </div><!-- /.col (RIGHT) -->
           </div><!-- /.row -->
 
